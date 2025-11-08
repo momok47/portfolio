@@ -67,7 +67,7 @@ body {
 }
 
 /* レガシーページのナビゲーション */
-.main nav {
+.main nav:not(.fixed-nav) {
     display: flex;
     width: 80%;
     margin: 20px auto;
@@ -609,7 +609,7 @@ body {
         padding: 1rem 1.5rem;
     }
 
-    .main nav {
+    .main nav:not(.fixed-nav) {
         width: 90%;
         margin: 15px auto;
     }
@@ -641,7 +641,7 @@ body {
     }
 
     /* ナビゲーション */
-    .main nav {
+    .main nav:not(.fixed-nav) {
         flex-direction: row;
         width: 95%;
         margin: 10px auto;
@@ -876,7 +876,7 @@ body {
         max-width: 120px;
     }
 
-    .main nav {
+    .main nav:not(.fixed-nav) {
         margin: 5px auto;
     }
 
