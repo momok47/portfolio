@@ -703,6 +703,8 @@ body {
 .presentation-embed-wrapper {
     position: relative;
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
     padding-bottom: 56.25%;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 12px;
