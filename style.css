@@ -811,14 +811,14 @@ body {
         right: -100%;
         top: 0;
         height: 100vh;
-        width: 55%;
-        max-width: 230px;
-        background: rgba(255, 243, 184, 0.9);
+        width: 60%;
+        max-width: 260px;
+        background: rgba(255, 243, 184, 0.95);
         backdrop-filter: blur(10px);
         flex-direction: column;
         transition: right 0.3s ease;
         z-index: 999;
-        padding-top: 60px;
+        padding-top: 70px;
         box-shadow: -5px 0 20px var(--shadow);
     }
 
