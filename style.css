@@ -602,6 +602,130 @@ body {
 }
 
 /* ========================================
+   Presentations ページ
+======================================== */
+.presentations-container {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(77, 59, 50, 0.15);
+}
+
+.presentations-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.presentations-description {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 2.5rem;
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+}
+
+.presentations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.presentation-card {
+    background: rgba(255, 243, 184, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.presentation-card:hover {
+    background: rgba(255, 243, 184, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(77, 59, 50, 0.1);
+    border-color: var(--accent-color);
+}
+
+.presentation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.presentation-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    flex: 1;
+}
+
+.presentation-date {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.presentation-body {
+    flex: 1;
+}
+
+.presentation-event {
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.presentation-description {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+.presentation-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(77, 59, 50, 0.1);
+}
+
+.presentation-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.presentation-link:hover {
+    color: var(--primary-color);
+    gap: 0.7rem;
+}
+
+.presentation-link svg {
+    transition: transform 0.3s ease;
+}
+
+.presentation-link:hover svg {
+    transform: translateX(3px);
+}
+
+/* ========================================
    レスポンシブデザイン - タブレット
 ======================================== */
 @media screen and (max-width: 1024px) {
@@ -854,6 +978,18 @@ body {
         height: 28px;
     }
 
+    /* Presentationsページ */
+    .presentations-container {
+        width: 90%;
+        padding: 2rem;
+        top: 50%;
+    }
+
+    .presentations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
     .main.career-page {
         overflow: auto;
     }
@@ -940,6 +1076,16 @@ body {
     .contact-icon {
         width: 50px;
         height: 50px;
+    }
+
+    /* Presentationsページ */
+    .presentations-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .presentation-card {
+        padding: 1.25rem;
     }
 }
 
