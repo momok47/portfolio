@@ -79,7 +79,7 @@ body {
     z-index: 3;
 }
 
-.main .nav-links {
+.nav-links {
     flex: 1;
     text-align: right;
 }
@@ -121,6 +121,7 @@ body {
 .nav-links ul {
     display: flex;
     list-style: none;
+    justify-content: flex-end;
     gap: 2rem;
 }
 
