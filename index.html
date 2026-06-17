@@ -7,9 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css?v=20251227">
+    <link rel="stylesheet" type="text/css" href="style.css?v=20260617">
 </head>
-<body>
+<body class="home-page">
+    <!-- ふわふわ浮遊する装飾レイヤー（JSで中身を生成） -->
+    <div class="deco-layer" aria-hidden="true"></div>
+
     <nav class="fixed-nav">
         <div class="nav-container">
             <div class="hamburger">
@@ -30,7 +33,7 @@
 
     <main class="main-content">
         <section class="hero-section">
-            <div class="hero-container">
+            <div class="hero-container reveal">
                 <div class="hero-image">
                     <img src="./images/profile_picture.png" alt="Momoko Shirakawa">
                 </div>
@@ -44,21 +47,21 @@
 
         <section class="profile-detail-section">
             <div class="container">
-                <h2 class="section-title">Profile</h2>
+                <h2 class="section-title reveal">Profile</h2>
                 <div class="profile-detail-container">
                     <div class="profile-detail-content">
                         <div class="profile-info-grid">
-                            <div class="profile-info-item">
+                            <div class="profile-info-item reveal">
                                 <h3>🎂 誕生日</h3>
                                 <p>2003年2月20日</p>
                             </div>
-                            <div class="profile-info-item">
+                            <div class="profile-info-item reveal">
                                 <h3>📍 出身地</h3>
                                 <p>埼玉県さいたま市</p>
                             </div>
                         </div>
                         
-                        <div class="research-interests">
+                        <div class="research-interests reveal">
                             <h3>🔬 研究への興味</h3>
                             <div class="research-item">
                                 <span class="research-label">研究分野</span>
@@ -80,23 +83,23 @@
 
         <section class="interests-section">
             <div class="container">
-                <h2 class="section-title">My Highlights</h2>
+                <h2 class="section-title reveal">My Highlights</h2>
                 <div class="interests-grid">
-                    <div class="interest-card">
+                    <div class="interest-card reveal">
                         <div class="card-icon">
                             <img src="./images/use_pc.png" alt="NLP">
                         </div>
                         <h3>自然言語処理</h3>
                         <p>NLUをメインに取り組んでいます😼</p>
                     </div>
-                    <div class="interest-card">
+                    <div class="interest-card reveal">
                         <div class="card-icon">
                             <img src="./images/cafe.png" alt="Cafe">
                         </div>
                         <h3>カフェ巡り</h3>
                         <p>コーヒーとチョコが大好きです💖</p>
                     </div>
-                    <div class="interest-card">
+                    <div class="interest-card reveal">
                         <div class="card-icon">
                             <img src="./images/travel.png" alt="Hobby">
                         </div>

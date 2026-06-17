@@ -1141,3 +1141,220 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* ========================================
+   ✨ トップページ専用：上品な可愛い演出
+   （.home-page にスコープして他ページに影響させない）
+======================================== */
+
+/* 背景は元のグラデーションのまま（body の指定を踏襲） */
+
+/* やわらかい光のにじみ（背景の奥でゆっくり呼吸） */
+.home-page::before {
+    content: '';
+    position: fixed;
+    inset: -20vmax;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(38vmax 38vmax at 18% 22%, rgba(255, 255, 255, 0.55), transparent 60%),
+        radial-gradient(32vmax 32vmax at 82% 75%, rgba(255, 200, 209, 0.45), transparent 60%);
+    animation: home-glow-breathe 16s ease-in-out infinite alternate;
+}
+
+@keyframes home-glow-breathe {
+    from { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+    to   { transform: translate3d(0, -2%, 0) scale(1.08); opacity: 1; }
+}
+
+/* コンテンツは装飾の手前に */
+.home-page .fixed-nav { z-index: 1000; }
+.home-page .main-content { position: relative; z-index: 1; }
+
+/* Contact など .main を使うページでは、背景を透過させて
+   body のグラデーション・光・浮遊装飾を見せる */
+.home-page .main {
+    background: transparent;
+}
+
+/* 浮遊するハート・キラキラのレイヤー */
+.deco-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.deco {
+    position: absolute;
+    bottom: -8vh;
+    font-size: 1.4rem;
+    line-height: 1;
+    opacity: 0;
+    user-select: none;
+    will-change: transform, opacity;
+    animation: deco-float linear infinite;
+}
+
+.deco.sparkle {
+    animation: deco-float linear infinite, deco-twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes deco-float {
+    0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: var(--deco-opacity, 0.7); }
+    50%  { transform: translateY(-55vh) translateX(var(--deco-drift, 2vw)) rotate(12deg); }
+    90%  { opacity: var(--deco-opacity, 0.7); }
+    100% { transform: translateY(-110vh) translateX(0) rotate(-8deg); opacity: 0; }
+}
+
+@keyframes deco-twinkle {
+    0%, 100% { filter: brightness(1); }
+    50%      { filter: brightness(1.6); }
+}
+
+/* ヒーロー：登場演出＋ふんわり常時フロート */
+.home-page .hero-image {
+    animation: hero-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.home-page .hero-image img {
+    animation: hero-bob 5.5s ease-in-out infinite;
+}
+
+.home-page .hero-image img:hover {
+    animation-play-state: paused;
+    transform: scale(1.03) rotate(-1.5deg);
+}
+
+@keyframes hero-pop {
+    from { opacity: 0; transform: scale(0.85) translateY(12px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes hero-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-10px) rotate(0.6deg); }
+}
+
+/* ヒーローのテキストを順番にふわっと */
+.home-page .hero-title,
+.home-page .hero-subtitle,
+.home-page .hero-description {
+    opacity: 0;
+    animation: text-rise 0.7s ease-out forwards;
+}
+.home-page .hero-title       { animation-delay: 0.25s; }
+.home-page .hero-subtitle    { animation-delay: 0.45s; }
+.home-page .hero-description  { animation-delay: 0.65s; }
+
+@keyframes text-rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* スクロールで出現（.is-visible はJSで付与） */
+.home-page .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.home-page .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* 旧来の一括フェードは reveal に任せる */
+.home-page .hero-container,
+.home-page .interest-card {
+    animation: none;
+}
+.home-page .hero-container.reveal { transition-delay: 0.05s; }
+
+/* セクションタイトルにキラッと一筋 */
+.home-page .section-title {
+    position: relative;
+    overflow: hidden;
+}
+.home-page .section-title.is-visible::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+    transform: skewX(-18deg);
+    animation: title-shine 1.1s ease-out 0.25s;
+}
+@keyframes title-shine {
+    from { left: -60%; }
+    to   { left: 130%; }
+}
+
+/* カードのホバーをもっと可愛く（弾む・アイコンが踊る） */
+.home-page .interest-card {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.home-page .interest-card:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+.home-page .interest-card:hover .card-icon {
+    animation: icon-bounce 0.6s ease;
+}
+@keyframes icon-bounce {
+    0%   { transform: translateY(0) scale(1); }
+    35%  { transform: translateY(-8px) scale(1.1) rotate(-6deg); }
+    65%  { transform: translateY(0) scale(1.05) rotate(5deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+/* ホバー時にぴょこっとハート */
+.home-page .interest-card::after {
+    content: '💕';
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(6px) scale(0.6);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+.home-page .interest-card {
+    position: relative;
+}
+.home-page .interest-card:hover::after {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* 研究カードは横にすべるホバー（既存を少し弾ませる） */
+.home-page .research-item {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, background 0.3s ease, border-left-color 0.3s ease;
+}
+
+/* 動きを控えたい人への配慮 */
+@media (prefers-reduced-motion: reduce) {
+    .home-page,
+    .home-page::before,
+    .deco,
+    .home-page .hero-image,
+    .home-page .hero-image img,
+    .home-page .hero-title,
+    .home-page .hero-subtitle,
+    .home-page .hero-description {
+        animation: none !important;
+    }
+    .home-page .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .home-page .hero-title,
+    .home-page .hero-subtitle,
+    .home-page .hero-description {
+        opacity: 1 !important;
+    }
+    .deco-layer { display: none; }
+}
